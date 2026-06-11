@@ -46,7 +46,7 @@ public class CocktailMod {
     @SubscribeEvent
     public void registerBrewing(RegisterBrewingRecipesEvent event) {
         event.getBuilder().addMix(
-                Potions.WATER,
+                Potions.AWKWARD,
                 Items.EGG,
                 COCKTAIL_POTION
         );
