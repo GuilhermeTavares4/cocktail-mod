@@ -1,9 +1,7 @@
 package com.cocktail.cocktailmod.potion;
 
-import static com.cocktail.cocktailmod.potion.CocktailPotions.COCKTAIL_POTION;
-import static com.cocktail.cocktailmod.potion.CocktailPotions.COCKTAIL_ZOMBIE_POTION;
-
 import com.cocktail.cocktailmod.CocktailMod;
+import static com.cocktail.cocktailmod.potion.CocktailPotions.*;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.Potions;
 import net.neoforged.bus.api.SubscribeEvent;
