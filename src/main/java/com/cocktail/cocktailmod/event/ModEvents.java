@@ -11,7 +11,8 @@ import tocraft.walkers.network.impl.SwapPackets;
 public class ModEvents {
     @SubscribeEvent
     public static void onMobEffectExpired(MobEffectEvent.Expired event) {
-        if (event.getEntity() instanceof Player player && event.getEffectInstance().toString().equals("effect.cocktailmod.zombie_morph, Duration: 0")) {
+        if (!(event.getEntity() instanceof Player player)) return;
+        if (event.getEffectInstance().toString().contains("cocktailmod")) {
             SwapPackets.sendSwapRequest();
         }
     }
