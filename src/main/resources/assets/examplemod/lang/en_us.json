@@ -1,3 +1,5 @@
 {
-  "item.minecraft.potion.effect.cocktail": "Cocktail"
+  "item.minecraft.potion.effect.cocktail": "Cocktail",
+  "item.minecraft.potion.effect.cocktail_zombie": "Cocktail Zombie",
+  "effect.cocktailmod.zombie_morph": "Zombie Morph"
 }
