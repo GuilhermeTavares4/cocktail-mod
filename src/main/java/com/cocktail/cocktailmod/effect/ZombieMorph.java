@@ -13,17 +13,12 @@ public class ZombieMorph extends MobEffect {
     }
 
     @Override
-    public boolean applyEffectTick(LivingEntity entity, int amplifier) {
+    public void onEffectAdded(LivingEntity entity, int amplifier) {
         if (entity instanceof ServerPlayer player) {
             Zombie zombie = new Zombie(EntityType.ZOMBIE, player.serverLevel());
             PlayerShape.updateShapes(player, zombie);
         }
-
-        return true;
     }
 
-    @Override
-    public boolean shouldApplyEffectTickThisTick(int duration, int amplifier) {
-        return true;
-    }
 }
+
