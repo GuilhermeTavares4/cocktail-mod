@@ -11,7 +11,7 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 
 public class CocktailPotions {
     public static final DeferredRegister<Potion> POTIONS =
-            DeferredRegister.create(BuiltInRegistries.POTION, CocktailMod.MODID);
+            DeferredRegister.create(BuiltInRegistries.POTION, CocktailMod.MOD_ID);
 
     public static final DeferredHolder<Potion, Potion> COCKTAIL_POTION =
             POTIONS.register("cocktail", () -> new Potion());

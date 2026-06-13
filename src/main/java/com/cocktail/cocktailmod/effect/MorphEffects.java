@@ -1,18 +1,16 @@
 package com.cocktail.cocktailmod.effect;
 
+import com.cocktail.cocktailmod.CocktailMod;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
-
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-import com.cocktail.cocktailmod.CocktailMod;
-
 public class MorphEffects {
     public static final DeferredRegister<MobEffect> MORPH_EFFECTS =
-            DeferredRegister.create(Registries.MOB_EFFECT, CocktailMod.MODID);
+            DeferredRegister.create(Registries.MOB_EFFECT, CocktailMod.MOD_ID);
 
     public static final Holder<MobEffect> ZOMBIE_MORPH =
             MORPH_EFFECTS.register("zombie_morph",

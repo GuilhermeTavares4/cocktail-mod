@@ -7,9 +7,9 @@ import com.mojang.logging.LogUtils;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
 
-@Mod(CocktailMod.MODID)
+@Mod(CocktailMod.MOD_ID)
 public class CocktailMod {
-    public static final String MODID = "cocktailmod";
+    public static final String MOD_ID = "cocktailmod";
     public static final Logger LOGGER = LogUtils.getLogger();
 
     public CocktailMod(IEventBus modEventBus) {
