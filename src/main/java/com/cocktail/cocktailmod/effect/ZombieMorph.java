@@ -1,5 +1,6 @@
 package com.cocktail.cocktailmod.effect;
 
+import com.cocktail.cocktailmod.CocktailMod;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
@@ -16,10 +17,10 @@ public class ZombieMorph extends MobEffect {
     @Override
     public void onEffectAdded(LivingEntity entity, int amplifier) {
         if (entity instanceof ServerPlayer player) {
+            player.getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MOVEMENT_SPEED).setBaseValue(0.035);
             Zombie zombie = new Zombie(EntityType.ZOMBIE, player.serverLevel());
             PlayerShape.updateShapes(player, zombie);
         }
     }
-
 }
 
