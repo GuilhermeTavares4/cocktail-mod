@@ -22,8 +22,11 @@ public class CocktailPotions {
     public static final DeferredHolder<Potion, Potion> COCKTAIL_POTION =
             POTIONS.register("cocktail", () -> new Potion());
 
+    public static final int MORPH_DURATION = 20 * 10; // 10s
+
     public static final DeferredHolder<Potion, Potion> COCKTAIL_ZOMBIE_POTION =
-            POTIONS.register("cocktail_zombie", () -> new Potion(new MobEffectInstance(MorphEffects.ZOMBIE_MORPH, 20 * 10, 0)));
+            POTIONS.register("cocktail_zombie", () -> new Potion(
+                    new MobEffectInstance(MorphEffects.ZOMBIE_MORPH, MORPH_DURATION, 0)));
 
     @SubscribeEvent
     public static void registerBrewing(RegisterBrewingRecipesEvent event) {
