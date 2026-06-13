@@ -4,11 +4,17 @@ import com.cocktail.cocktailmod.CocktailMod;
 import com.cocktail.cocktailmod.effect.MorphEffects;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.Potion;
+import net.minecraft.world.item.alchemy.Potions;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.brewing.RegisterBrewingRecipesEvent;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
+@EventBusSubscriber(modid = CocktailMod.MOD_ID)
 public class CocktailPotions {
     public static final DeferredRegister<Potion> POTIONS =
             DeferredRegister.create(BuiltInRegistries.POTION, CocktailMod.MOD_ID);
@@ -18,6 +24,12 @@ public class CocktailPotions {
 
     public static final DeferredHolder<Potion, Potion> COCKTAIL_ZOMBIE_POTION =
             POTIONS.register("cocktail_zombie", () -> new Potion(new MobEffectInstance(MorphEffects.ZOMBIE_MORPH, 20 * 10, 0)));
+
+    @SubscribeEvent
+    public static void registerBrewing(RegisterBrewingRecipesEvent event) {
+        event.getBuilder().addMix(Potions.AWKWARD, Items.EGG, COCKTAIL_POTION);
+        event.getBuilder().addMix(COCKTAIL_POTION, Items.ROTTEN_FLESH, COCKTAIL_ZOMBIE_POTION);
+    }
 
     public static void register(IEventBus eventBus) {
         POTIONS.register(eventBus);
