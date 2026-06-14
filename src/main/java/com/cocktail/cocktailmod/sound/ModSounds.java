@@ -8,13 +8,15 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.Resource;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.item.JukeboxSong;
+import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
 
 import java.util.function.Supplier;
 
 public class ModSounds {
-    public static final DeferredRegister<SoundEvent> SOUND_EVENTS = DeferredRegister.create(BuiltInRegistries.SOUND_EVENT, CocktailMod.MODID);
+    public static final DeferredRegister<SoundEvent> SOUND_EVENTS =
+            DeferredRegister.create(BuiltInRegistries.SOUND_EVENT, CocktailMod.MODID);
 
     public static final Supplier<SoundEvent> RAP_DO_MINECRAFT = registerSoundEvent("rap_do_minecraft");
     public static final ResourceKey<JukeboxSong> RAP_DO_MINECRAFT_KEY = createSong("rap_do_minecraft");
@@ -26,5 +28,9 @@ public class ModSounds {
     private static Supplier<SoundEvent> registerSoundEvent(String name) {
     ResourceLocation id = ResourceLocation.fromNamespaceAndPath(CocktailMod.MODID, name);
     return SOUND_EVENTS.register(name, () -> SoundEvent.createVariableRangeEvent((id)));
+    }
+
+    public static void register(IEventBus modEventBus) {
+        SOUND_EVENTS.register(modEventBus);
     }
 }
