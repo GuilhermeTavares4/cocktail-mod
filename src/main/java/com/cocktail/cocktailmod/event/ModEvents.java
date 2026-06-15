@@ -17,6 +17,10 @@ public class ModEvents {
 
         var effect = event.getEffectInstance().getEffect();
         if (effect.toString().contains("morph")) { SwapPackets.sendSwapRequest(); } // remove morph
-        if (effect == MorphEffects.ZOMBIE_MORPH ) { player.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(0.1); }
+
+        if (effect == MorphEffects.ZOMBIE_MORPH
+        || effect == MorphEffects.CREEPER_MORPH) {
+            player.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(0.1);
+        }
     }
 }

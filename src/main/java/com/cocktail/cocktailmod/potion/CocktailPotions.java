@@ -28,10 +28,15 @@ public class CocktailPotions {
             POTIONS.register("cocktail_zombie", () -> new Potion(
                     new MobEffectInstance(MorphEffects.ZOMBIE_MORPH, MORPH_DURATION, 0)));
 
+    public static final DeferredHolder<Potion, Potion> COCKTAIL_CREEPER_POTION =
+            POTIONS.register("cocktail_creeper", () -> new Potion(
+                    new MobEffectInstance(MorphEffects.CREEPER_MORPH, MORPH_DURATION, 0)));
+
     @SubscribeEvent
     public static void registerBrewing(RegisterBrewingRecipesEvent event) {
         event.getBuilder().addMix(Potions.AWKWARD, Items.EGG, COCKTAIL_POTION);
         event.getBuilder().addMix(COCKTAIL_POTION, Items.ROTTEN_FLESH, COCKTAIL_ZOMBIE_POTION);
+        event.getBuilder().addMix(COCKTAIL_POTION, Items.TNT, COCKTAIL_CREEPER_POTION);
     }
 
     public static void register(IEventBus eventBus) {

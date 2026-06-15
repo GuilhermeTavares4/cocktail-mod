@@ -16,6 +16,10 @@ public class MorphEffects {
             MORPH_EFFECTS.register("zombie_morph",
                     () -> new ZombieMorph(MobEffectCategory.NEUTRAL, 0x3B7A57));
 
+    public static final Holder<MobEffect> CREEPER_MORPH =
+            MORPH_EFFECTS.register("creeper_morph",
+                    () -> new CreeperMorph(MobEffectCategory.NEUTRAL, 0x0F800F));
+
     public static void register(IEventBus eventBus) {
         MORPH_EFFECTS.register(eventBus);
     }
