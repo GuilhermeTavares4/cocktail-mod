@@ -16,17 +16,17 @@ import java.util.function.Supplier;
 
 public class ModSounds {
     public static final DeferredRegister<SoundEvent> SOUND_EVENTS =
-            DeferredRegister.create(BuiltInRegistries.SOUND_EVENT, CocktailMod.MODID);
+            DeferredRegister.create(BuiltInRegistries.SOUND_EVENT, CocktailMod.MOD_ID);
 
     public static final Supplier<SoundEvent> RAP_DO_MINECRAFT = registerSoundEvent("rap_do_minecraft");
     public static final ResourceKey<JukeboxSong> RAP_DO_MINECRAFT_KEY = createSong("rap_do_minecraft");
 
     private static ResourceKey<JukeboxSong> createSong(String name) {
-        return ResourceKey.create(Registries.JUKEBOX_SONG, ResourceLocation.fromNamespaceAndPath(CocktailMod.MODID, name));
+        return ResourceKey.create(Registries.JUKEBOX_SONG, ResourceLocation.fromNamespaceAndPath(CocktailMod.MOD_ID, name));
     }
 
     private static Supplier<SoundEvent> registerSoundEvent(String name) {
-    ResourceLocation id = ResourceLocation.fromNamespaceAndPath(CocktailMod.MODID, name);
+    ResourceLocation id = ResourceLocation.fromNamespaceAndPath(CocktailMod.MOD_ID, name);
     return SOUND_EVENTS.register(name, () -> SoundEvent.createVariableRangeEvent((id)));
     }
 
