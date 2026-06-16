@@ -1,0 +1,11 @@
+{
+  "rap_do_minecraft":{
+    "sounds": [
+      {
+        "name": "cocktailmod:rap_do_minecraft",
+        "stream": true
+      }
+    ]
+  }
+
+}
