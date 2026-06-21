@@ -13,6 +13,11 @@
   "item.minecraft.lingering_potion.effect.cocktail_creeper": "Lingering Cocktail Creeper",
   "item.minecraft.splash_potion.effect.cocktail_creeper": "Splash Cocktail Creeper",
 
+  "effect.cocktailmod.enderman_morph": "Enderman Morph",
+  "item.minecraft.potion.effect.cocktail_enderman": "Cocktail Enderman",
+  "item.minecraft.lingering_potion.effect.cocktail_enderman": "Lingering Cocktail Enderman",
+  "item.minecraft.splash_potion.effect.cocktail_enderman": "Splash Cocktail Enderman",
+
   "item.cocktailmod.rap_do_minecraft_music_disc": "Rap do Minecraft Music Disc",
   "item.cocktailmod.rap_do_minecraft_music_disc.desc": "Player Tauz - Rap do Minecraft"
 }
