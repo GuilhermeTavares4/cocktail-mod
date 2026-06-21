@@ -8,6 +8,11 @@
   "item.minecraft.lingering_potion.effect.cocktail_zombie": "Lingering Cocktail Zombie",
   "item.minecraft.splash_potion.effect.cocktail_zombie": "Splash Cocktail Zombie",
 
+  "effect.cocktailmod.creeper_morph": "Creeper Morph",
+  "item.minecraft.potion.effect.cocktail_creeper": "Cocktail Creeper",
+  "item.minecraft.lingering_potion.effect.cocktail_creeper": "Lingering Cocktail Creeper",
+  "item.minecraft.splash_potion.effect.cocktail_creeper": "Splash Cocktail Creeper",
+
   "item.cocktailmod.rap_do_minecraft_music_disc": "Rap do Minecraft Music Disc",
   "item.cocktailmod.rap_do_minecraft_music_disc.desc": "Player Tauz - Rap do Minecraft"
 }
