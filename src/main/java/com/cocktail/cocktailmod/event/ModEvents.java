@@ -11,8 +11,18 @@ import tocraft.walkers.network.impl.SwapPackets;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.core.Holder;
 
+import java.util.Arrays;
+import java.util.List;
+
 @EventBusSubscriber(modid = CocktailMod.MOD_ID)
 public class ModEvents {
+
+    private static final List<Holder<MobEffect>> slowedMorphs =
+            Arrays.asList(
+                    MorphEffects.CREEPER_MORPH,
+                    MorphEffects.ZOMBIE_MORPH
+            );
+
     @SubscribeEvent
     public static void onMobEffectApplicable(MobEffectEvent.Applicable event) {
         if (!(event.getEntity() instanceof Player player)) return;
@@ -27,7 +37,7 @@ public class ModEvents {
 
                 if (isActiveEffectAMorph) {
                     player.removeEffect(currentActiveEffect);
-                    SwapPackets.sendSwapRequest();
+                    onMobEffectRemoved(player, currentActiveEffect, true);
                     break;
                 }
             }
@@ -38,10 +48,14 @@ public class ModEvents {
         if (!(event.getEntity() instanceof Player player)) return;
 
         var effect = event.getEffectInstance().getEffect();
-        if (effect.toString().contains("morph")) { SwapPackets.sendSwapRequest(); } // remove morph
+        onMobEffectRemoved(player, effect, false);
 
-        if (effect == MorphEffects.ZOMBIE_MORPH
-        || effect == MorphEffects.CREEPER_MORPH) {
+    }
+
+    public static void onMobEffectRemoved(Player player, Holder<MobEffect> effect, boolean isEffectOverlapping) {
+        if (effect.toString().contains("morph") && !isEffectOverlapping) { SwapPackets.sendSwapRequest(); } // remove morph
+
+        if (slowedMorphs.contains(effect)) {
             player.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(0.1);
         }
     }
