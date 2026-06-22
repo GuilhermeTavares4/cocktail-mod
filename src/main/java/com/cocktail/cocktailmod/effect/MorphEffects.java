@@ -24,6 +24,18 @@ public class MorphEffects {
             MORPH_EFFECTS.register("enderman_morph",
                     () -> new EndermanMorph(MobEffectCategory.NEUTRAL, 0x3f003e));
 
+    public static final Holder<MobEffect> SPIDER_MORPH =
+            MORPH_EFFECTS.register("spider_morph",
+                    () -> new SpiderMorph(MobEffectCategory.NEUTRAL, 0xbe0404));
+
+    public static final Holder<MobEffect> SKELETON_MORPH =
+            MORPH_EFFECTS.register("skeleton_morph",
+                    () -> new SkeletonMorph(MobEffectCategory.NEUTRAL, 0xd3d3d3));
+
+    public static final Holder<MobEffect> BLAZE_MORPH =
+            MORPH_EFFECTS.register("blaze_morph",
+                    () -> new BlazeMorph(MobEffectCategory.NEUTRAL, 0xfc9600));
+
     public static void register(IEventBus eventBus) {
         MORPH_EFFECTS.register(eventBus);
     }

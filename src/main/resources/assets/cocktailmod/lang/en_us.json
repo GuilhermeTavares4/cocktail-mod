@@ -18,6 +18,21 @@
   "item.minecraft.lingering_potion.effect.cocktail_enderman": "Lingering Cocktail Enderman",
   "item.minecraft.splash_potion.effect.cocktail_enderman": "Splash Cocktail Enderman",
 
+  "effect.cocktailmod.spider_morph": "Spider Morph",
+  "item.minecraft.potion.effect.cocktail_spider": "Cocktail Spider",
+  "item.minecraft.lingering_potion.effect.cocktail_spider": "Lingering Cocktail Spider",
+  "item.minecraft.splash_potion.effect.cocktail_spider": "Splash Cocktail Spider",
+
+  "effect.cocktailmod.skeleton_morph": "Skeleton Morph",
+  "item.minecraft.potion.effect.cocktail_skeleton": "Cocktail Skeleton",
+  "item.minecraft.lingering_potion.effect.cocktail_skeleton": "Lingering Cocktail Skeleton",
+  "item.minecraft.splash_potion.effect.cocktail_skeleton": "Splash Cocktail Skeleton",
+
+  "effect.cocktailmod.blaze_morph": "Blaze Morph",
+  "item.minecraft.potion.effect.cocktail_blaze": "Cocktail Blaze",
+  "item.minecraft.lingering_potion.effect.cocktail_blaze": "Lingering Cocktail Blaze",
+  "item.minecraft.splash_potion.effect.cocktail_blaze": "Splash Cocktail Blaze",
+
   "item.cocktailmod.rap_do_minecraft_music_disc": "Rap do Minecraft Music Disc",
   "item.cocktailmod.rap_do_minecraft_music_disc.desc": "Player Tauz - Rap do Minecraft"
 }

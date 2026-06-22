@@ -36,13 +36,27 @@ public class CocktailPotions {
             POTIONS.register("cocktail_enderman", () -> new Potion(
                     new MobEffectInstance(MorphEffects.ENDERMAN_MORPH, MORPH_DURATION,0)));
 
+    public static final DeferredHolder<Potion, Potion> COCKTAIL_SPIDER_POTION =
+            POTIONS.register("cocktail_spider", () -> new Potion(
+                    new MobEffectInstance(MorphEffects.SPIDER_MORPH, MORPH_DURATION,0)));
+
+    public static final DeferredHolder<Potion, Potion> COCKTAIL_SKELETON_POTION =
+            POTIONS.register("cocktail_skeleton", () -> new Potion(
+                    new MobEffectInstance(MorphEffects.SKELETON_MORPH, MORPH_DURATION,0)));
+
+    public static final DeferredHolder<Potion, Potion> COCKTAIL_BLAZE_POTION =
+            POTIONS.register("cocktail_blaze", () -> new Potion(
+                    new MobEffectInstance(MorphEffects.BLAZE_MORPH, MORPH_DURATION,0)));
+
     @SubscribeEvent
     public static void registerBrewing(RegisterBrewingRecipesEvent event) {
         event.getBuilder().addMix(Potions.AWKWARD, Items.EGG, COCKTAIL_POTION);
         event.getBuilder().addMix(COCKTAIL_POTION, Items.ROTTEN_FLESH, COCKTAIL_ZOMBIE_POTION);
         event.getBuilder().addMix(COCKTAIL_POTION, Items.TNT, COCKTAIL_CREEPER_POTION);
         event.getBuilder().addMix(COCKTAIL_POTION, Items.ENDER_PEARL, COCKTAIL_ENDERMAN_POTION);
-
+        event.getBuilder().addMix(COCKTAIL_POTION, Items.SPIDER_EYE, COCKTAIL_SPIDER_POTION);
+        event.getBuilder().addMix(COCKTAIL_POTION, Items.BONE, COCKTAIL_SKELETON_POTION);
+        event.getBuilder().addMix(COCKTAIL_POTION, Items.BLAZE_ROD, COCKTAIL_BLAZE_POTION);
     }
 
     public static void register(IEventBus eventBus) {
