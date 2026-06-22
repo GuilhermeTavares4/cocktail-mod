@@ -12,7 +12,6 @@ import tocraft.walkers.network.impl.SwapPackets;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.core.Holder;
 import net.neoforged.neoforge.event.entity.living.LivingFallEvent;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -45,7 +44,7 @@ public class ModEvents {
 
                 if (isActiveEffectAMorph) {
                     player.removeEffect(currentActiveEffect);
-                    onMobEffectRemoved(player, currentActiveEffect, true);
+                    cleanupMorph(player, currentActiveEffect, true);
                     break;
                 }
             }
@@ -56,21 +55,16 @@ public class ModEvents {
         if (!(event.getEntity() instanceof Player player)) return;
 
         var effect = event.getEffectInstance().getEffect();
-        onMobEffectRemoved(player, effect, false);
+        cleanupMorph(player, effect, false);
     }
     @SubscribeEvent
     public static void onLivingFall(LivingFallEvent event) {
-        System.out.println("CHAOS");
-        if (!(event.getEntity() instanceof Player player)) return;
-        System.out.println("NOT PLAYER ENTITY");
-        CocktailMod.LOGGER.info("Active effects: {}", player.getActiveEffectsMap().keySet());
-        if (player.getActiveEffectsMap().containsKey(MorphEffects.SLIME_MORPH)) {
-            System.out.println("SHOULDNT DIE");
-            event.setDistance(0.0f);
+        if (event.getEntity().getType().toString().contains("slime")) {
+            event.setDamageMultiplier(0);
         }
     }
 
-    public static void onMobEffectRemoved(Player player, Holder<MobEffect> effect, boolean isEffectOverlapping) {
+    public static void cleanupMorph(Player player, Holder<MobEffect> effect, boolean isEffectOverlapping) {
         if (effect.toString().contains("morph")) {
             if (!isEffectOverlapping) {
                 SwapPackets.sendSwapRequest(); // remove morph
@@ -83,13 +77,14 @@ public class ModEvents {
             }
         }
     }
-
     @SubscribeEvent
     public static void onLivingDeath(LivingDeathEvent event) {
-        if (event.getEntity() instanceof Player player) {
-            if (player.getActiveEffects().toString().contains("morph")) {
-                SwapPackets.sendSwapRequest();
-            }
-        }
+        if (!(event.getEntity() instanceof Player player))
+            return;
+
+        player.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(0.1);
+        player.getAttribute(Attributes.JUMP_STRENGTH).setBaseValue(0.42);
+
+        SwapPackets.sendSwapRequest();
     }
 }
