@@ -117,9 +117,13 @@ configurations {
     runtimeClasspath.extendsFrom localRuntime
 }
 
+repositories {
+    maven { url = "https://maven.tocraft.dev/public/" }
+}
+
 dependencies {
-    implementation files("libs/walkers-5.8.11.jar")
-    implementation files("libs/craftedcore-5.8.2.jar")
+    implementation("dev.tocraft:walkers-neoforge:1.21-5.8.11")
+//    implementation files("libs/craftedcore-5.8.2.jar")
 
     // Example optional mod dependency with JEI
     // The JEI API is declared for compile time use, while the full JEI artifact is used at runtime
