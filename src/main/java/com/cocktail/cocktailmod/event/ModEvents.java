@@ -66,7 +66,6 @@ public class ModEvents {
     @SubscribeEvent
     public static void onPlayerDeath(LivingDeathEvent event) {
         if (event.getEntity() instanceof Player player) {
-            System.out.println(player.getActiveEffects());
             if (player.getActiveEffects().toString().contains("morph")) {
                 SwapPackets.sendSwapRequest();
             }

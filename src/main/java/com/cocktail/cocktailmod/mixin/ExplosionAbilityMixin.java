@@ -15,10 +15,7 @@ public class ExplosionAbilityMixin {
 
     @Inject(method = "onUse", at = @At("HEAD"), cancellable = true)
     private void modifyExplosion(Player player, LivingEntity shape, Level world, CallbackInfo ci) {
-
         world.explode(player, player.getX(), player.getY(), player.getZ(), 30.0F, true, ExplosionInteraction.TNT);
-        System.out.println("cu");
-
         ci.cancel();
     }
 }
