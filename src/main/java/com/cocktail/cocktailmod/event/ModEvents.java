@@ -52,8 +52,10 @@ public class ModEvents {
     }
 
     public static void onMobEffectRemoved(Player player, Holder<MobEffect> effect, boolean isEffectOverlapping) {
-        if (effect.toString().contains("morph") && !isEffectOverlapping) {
-            SwapPackets.sendSwapRequest(); // remove morph
+        if (effect.toString().contains("morph")) {
+            if (!isEffectOverlapping) {
+                SwapPackets.sendSwapRequest(); // remove morph
+            }
             if (slowedMorphs.contains(effect)) {
                 player.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(0.1);
             }
