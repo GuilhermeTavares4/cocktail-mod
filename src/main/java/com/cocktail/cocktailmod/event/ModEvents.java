@@ -6,6 +6,7 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.entity.living.MobEffectEvent;
 import tocraft.walkers.network.impl.SwapPackets;
 import net.minecraft.world.effect.MobEffect;
@@ -79,6 +80,15 @@ public class ModEvents {
             }
             if (jumpingMorphs.contains(effect)) {
                 player.getAttribute(Attributes.JUMP_STRENGTH).setBaseValue(0.42);
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void onLivingDeath(LivingDeathEvent event) {
+        if (event.getEntity() instanceof Player player) {
+            if (player.getActiveEffects().toString().contains("morph")) {
+                SwapPackets.sendSwapRequest();
             }
         }
     }
