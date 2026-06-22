@@ -33,6 +33,11 @@
   "item.minecraft.lingering_potion.effect.cocktail_blaze": "Lingering Cocktail Blaze",
   "item.minecraft.splash_potion.effect.cocktail_blaze": "Splash Cocktail Blaze",
 
+  "effect.cocktailmod.slime_morph": "Slime Morph",
+  "item.minecraft.potion.effect.cocktail_slime": "Cocktail Slime",
+  "item.minecraft.lingering_potion.effect.cocktail_slime": "Lingering Cocktail Slime",
+  "item.minecraft.splash_potion.effect.cocktail_slime": "Splash Cocktail Slime",
+
   "item.cocktailmod.rap_do_minecraft_music_disc": "Rap do Minecraft Music Disc",
   "item.cocktailmod.rap_do_minecraft_music_disc.desc": "Player Tauz - Rap do Minecraft"
 }

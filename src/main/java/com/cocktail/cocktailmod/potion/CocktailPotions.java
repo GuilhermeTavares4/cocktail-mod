@@ -48,6 +48,10 @@ public class CocktailPotions {
             POTIONS.register("cocktail_blaze", () -> new Potion(
                     new MobEffectInstance(MorphEffects.BLAZE_MORPH, MORPH_DURATION,0)));
 
+    public static final DeferredHolder<Potion, Potion> COCKTAIL_SLIME_POTION =
+            POTIONS.register("cocktail_slime", () -> new Potion(
+                    new MobEffectInstance(MorphEffects.SLIME_MORPH, MORPH_DURATION, 0)));
+
     @SubscribeEvent
     public static void registerBrewing(RegisterBrewingRecipesEvent event) {
         event.getBuilder().addMix(Potions.AWKWARD, Items.EGG, COCKTAIL_POTION);
@@ -57,6 +61,7 @@ public class CocktailPotions {
         event.getBuilder().addMix(COCKTAIL_POTION, Items.SPIDER_EYE, COCKTAIL_SPIDER_POTION);
         event.getBuilder().addMix(COCKTAIL_POTION, Items.BONE, COCKTAIL_SKELETON_POTION);
         event.getBuilder().addMix(COCKTAIL_POTION, Items.BLAZE_ROD, COCKTAIL_BLAZE_POTION);
+        event.getBuilder().addMix(COCKTAIL_POTION, Items.SLIME_BALL, COCKTAIL_SLIME_POTION);
     }
 
     public static void register(IEventBus eventBus) {
