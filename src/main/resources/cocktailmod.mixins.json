@@ -4,7 +4,9 @@
   "package": "com.cocktail.cocktailmod.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "ExplosionAbilityMixin"
+    "ExplosionAbilityMixin",
+    "ShootArrowAbilityMixin",
+    "ShootArrowAbilityCooldownMixin"
   ],
   "injectors": {
     "defaultRequire": 1

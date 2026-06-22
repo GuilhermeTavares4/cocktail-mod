@@ -2,8 +2,12 @@ package com.cocktail.cocktailmod.event;
 
 import com.cocktail.cocktailmod.CocktailMod;
 import com.cocktail.cocktailmod.effect.MorphEffects;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.component.CustomData;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
@@ -17,7 +21,6 @@ import java.util.List;
 
 @EventBusSubscriber(modid = CocktailMod.MOD_ID)
 public class ModEvents {
-
     private static final List<Holder<MobEffect>> slowedMorphs =
             Arrays.asList(
                     MorphEffects.CREEPER_MORPH,
@@ -56,6 +59,17 @@ public class ModEvents {
         if (effect.toString().contains("morph")) {
             if (!isEffectOverlapping) {
                 SwapPackets.sendSwapRequest(); // remove morph
+            }
+            if (effect.toString().contains("skeleton")) {
+                player.getInventory().clearOrCountMatchingItems(
+                stack -> {
+                        CustomData data = stack.get(DataComponents.CUSTOM_DATA);
+                        if (data == null) return false;
+                        CompoundTag tag = data.copyTag();
+                        return tag.getBoolean("cocktailmod:skeleton_bow");
+                    }, 1,
+                    player.inventoryMenu.getCraftSlots()
+                );
             }
             if (slowedMorphs.contains(effect)) {
                 player.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(0.1);
