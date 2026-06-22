@@ -10,6 +10,7 @@ import net.neoforged.neoforge.event.entity.living.MobEffectEvent;
 import tocraft.walkers.network.impl.SwapPackets;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.core.Holder;
+import net.neoforged.neoforge.event.entity.living.LivingFallEvent;
 
 import java.util.Arrays;
 import java.util.List;
@@ -20,7 +21,13 @@ public class ModEvents {
     private static final List<Holder<MobEffect>> slowedMorphs =
             Arrays.asList(
                     MorphEffects.CREEPER_MORPH,
-                    MorphEffects.ZOMBIE_MORPH
+                    MorphEffects.ZOMBIE_MORPH,
+                    MorphEffects.SLIME_MORPH
+            );
+
+    private static final List<Holder<MobEffect>> jumpingMorphs =
+            Arrays.asList(
+                    MorphEffects.SLIME_MORPH
             );
 
     @SubscribeEvent
@@ -50,6 +57,17 @@ public class ModEvents {
         var effect = event.getEffectInstance().getEffect();
         onMobEffectRemoved(player, effect, false);
     }
+    @SubscribeEvent
+    public static void onLivingFall(LivingFallEvent event) {
+        System.out.println("CHAOS");
+        if (!(event.getEntity() instanceof Player player)) return;
+        System.out.println("NOT PLAYER ENTITY");
+        CocktailMod.LOGGER.info("Active effects: {}", player.getActiveEffectsMap().keySet());
+        if (player.getActiveEffectsMap().containsKey(MorphEffects.SLIME_MORPH)) {
+            System.out.println("SHOULDNT DIE");
+            event.setDistance(0.0f);
+        }
+    }
 
     public static void onMobEffectRemoved(Player player, Holder<MobEffect> effect, boolean isEffectOverlapping) {
         if (effect.toString().contains("morph")) {
@@ -58,6 +76,9 @@ public class ModEvents {
             }
             if (slowedMorphs.contains(effect)) {
                 player.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(0.1);
+            }
+            if (jumpingMorphs.contains(effect)) {
+                player.getAttribute(Attributes.JUMP_STRENGTH).setBaseValue(0.42);
             }
         }
     }

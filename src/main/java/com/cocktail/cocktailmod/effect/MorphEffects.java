@@ -36,6 +36,10 @@ public class MorphEffects {
             MORPH_EFFECTS.register("blaze_morph",
                     () -> new BlazeMorph(MobEffectCategory.NEUTRAL, 0xfc9600));
 
+    public static final Holder<MobEffect> SLIME_MORPH =
+            MORPH_EFFECTS.register("slime_morph",
+                    () -> new SlimeMorph(MobEffectCategory.NEUTRAL, 0x51A03E));
+
     public static void register(IEventBus eventBus) {
         MORPH_EFFECTS.register(eventBus);
     }
