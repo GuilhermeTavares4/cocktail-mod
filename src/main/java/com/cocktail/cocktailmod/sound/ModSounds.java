@@ -21,6 +21,9 @@ public class ModSounds {
     public static final Supplier<SoundEvent> RAP_DO_MINECRAFT = registerSoundEvent("rap_do_minecraft");
     public static final ResourceKey<JukeboxSong> RAP_DO_MINECRAFT_KEY = createSong("rap_do_minecraft");
 
+    public static final Supplier<SoundEvent> METAMORFOSE_AMBULANTE = registerSoundEvent("metamorfose_ambulante");
+    public static final ResourceKey<JukeboxSong> METAMORFOSE_AMBULANTE_KEY = createSong("metamorfose_ambulante");
+
     private static ResourceKey<JukeboxSong> createSong(String name) {
         return ResourceKey.create(Registries.JUKEBOX_SONG, ResourceLocation.fromNamespaceAndPath(CocktailMod.MOD_ID, name));
     }

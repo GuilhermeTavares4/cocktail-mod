@@ -6,6 +6,15 @@
         "stream": true
       }
     ]
+  },
+
+  "metamorfose_ambulante":{
+    "sounds": [
+      {
+        "name": "cocktailmod:metamorfose_ambulante",
+        "stream": true
+      }
+    ]
   }
 
 }

@@ -28,6 +28,7 @@ public class CocktailMod {
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
         if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
             event.accept(ModItems.RAP_DO_MINECRAFT_MUSIC_DISC);
+            event.accept(ModItems.METAMORFOSE_AMBULANTE_MUSIC_DISC);
         }
     }
 }

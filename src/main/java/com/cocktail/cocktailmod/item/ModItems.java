@@ -13,6 +13,9 @@ public class ModItems {
     public static final DeferredItem<Item> RAP_DO_MINECRAFT_MUSIC_DISC = ITEMS.register("rap_do_minecraft_music_disc",
             () -> new Item(new Item.Properties().jukeboxPlayable(ModSounds.RAP_DO_MINECRAFT_KEY).stacksTo(1)));
 
+    public static final DeferredItem<Item> METAMORFOSE_AMBULANTE_MUSIC_DISC = ITEMS.register("metamorfose_ambulante_music_disc",
+            () -> new Item(new Item.Properties().jukeboxPlayable(ModSounds.METAMORFOSE_AMBULANTE_KEY).stacksTo(1)));
+
     public static void register(IEventBus modEventBus) {
         ITEMS.register(modEventBus);
     }
