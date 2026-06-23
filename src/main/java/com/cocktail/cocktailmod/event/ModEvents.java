@@ -39,6 +39,8 @@ public class ModEvents {
                     MorphEffects.SLIME_MORPH
             );
 
+    private static boolean isSwappingMorph = false;
+
     @SubscribeEvent
     public static void onMobEffectApplicable(MobEffectEvent.Applicable event) {
         if (!(event.getEntity() instanceof Player player)) return;
@@ -52,7 +54,9 @@ public class ModEvents {
                 boolean isActiveEffectAMorph = currentActiveEffect.value().getDescriptionId().contains("morph");
 
                 if (isActiveEffectAMorph) {
+                    isSwappingMorph = true;
                     player.removeEffect(currentActiveEffect);
+                    isSwappingMorph = false;
                     cleanupMorph(player, currentActiveEffect, true);
                     break;
                 }
@@ -135,6 +139,18 @@ public class ModEvents {
                 world.explode(null, projectile.getX(), projectile.getY(), projectile.getZ(), 3.0f, Level.ExplosionInteraction.NONE);
                 projectile.discard();
             }
+        }
+    }
+
+    @SubscribeEvent
+    public static void onMobEffectRemoved(MobEffectEvent.Remove event) {
+        if (isSwappingMorph) return;
+        if (!(event.getEntity() instanceof Player player)) return;
+
+
+        var effect = event.getEffectInstance().getEffect();
+        if (effect.toString().contains("morph")){
+            cleanupMorph(player, effect, false);
         }
     }
 }
