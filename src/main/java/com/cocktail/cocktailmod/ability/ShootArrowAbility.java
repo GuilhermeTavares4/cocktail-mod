@@ -28,8 +28,6 @@ public class ShootArrowAbility extends GenericShapeAbility<Skeleton> {
         CustomData data = held.get(DataComponents.CUSTOM_DATA);
         if (data == null || !data.copyTag().getBoolean("cocktailmod:skeleton_bow")) return;
 
-
-
         for (int i = 0; i < 7; i ++) {
             Arrow arrow = new Arrow(world, player, Items.ARROW.getDefaultInstance(), null);
             arrow.setPos(player.getX(), player.getEyeY(), player.getZ());
@@ -41,8 +39,6 @@ public class ShootArrowAbility extends GenericShapeAbility<Skeleton> {
             world.addFreshEntity(arrow);
         }
         world.playSound(null, player.blockPosition(), SoundEvents.ARROW_SHOOT, SoundSource.PLAYERS, 1.0f, 1.0f);
-
-
     }
 
     @Override
