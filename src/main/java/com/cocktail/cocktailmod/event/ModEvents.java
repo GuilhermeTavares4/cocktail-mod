@@ -2,14 +2,20 @@ package com.cocktail.cocktailmod.event;
 
 import com.cocktail.cocktailmod.CocktailMod;
 import com.cocktail.cocktailmod.effect.MorphEffects;
+import com.cocktail.cocktailmod.effect.SkeletonMorph;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.Arrow;
+import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.CustomData;
+import net.minecraft.world.level.Level;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
+import net.neoforged.neoforge.event.entity.ProjectileImpactEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.entity.living.MobEffectEvent;
 import tocraft.walkers.network.impl.SwapPackets;
@@ -96,9 +102,39 @@ public class ModEvents {
         if (!(event.getEntity() instanceof Player player))
             return;
 
+        if (!player.getActiveEffects().toString().contains("morph")) {
+            return;
+        }
+
         player.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(0.1);
         player.getAttribute(Attributes.JUMP_STRENGTH).setBaseValue(0.42);
 
         SwapPackets.sendSwapRequest();
+    }
+
+    @SubscribeEvent
+    public static void onArrowSpawn(EntityJoinLevelEvent event) {
+        if (event.getEntity() instanceof Arrow arrow) {
+            if (arrow.getOwner() instanceof Player player) {
+                if (player.hasEffect(MorphEffects.SKELETON_MORPH)) {
+                    arrow.getPersistentData().putBoolean("addExplosionOnHit", false); // trocar para true se quiser que a flecha exploda ao colidir com algo
+                }
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void onProjectileImpact(ProjectileImpactEvent event) {
+        Projectile projectile = event.getProjectile();
+        Level world = projectile.level();
+
+        if (world.isClientSide()) return;
+
+        if (projectile instanceof Arrow) {
+            if (projectile.getPersistentData().getBoolean("addExplosionOnHit")) {
+                world.explode(null, projectile.getX(), projectile.getY(), projectile.getZ(), 3.0f, Level.ExplosionInteraction.NONE);
+                projectile.discard();
+            }
+        }
     }
 }
