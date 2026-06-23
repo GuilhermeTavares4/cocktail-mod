@@ -22,7 +22,7 @@ public class CocktailPotions {
     public static final DeferredHolder<Potion, Potion> COCKTAIL_POTION =
             POTIONS.register("cocktail", () -> new Potion());
 
-    public static final int MORPH_DURATION = 20 * 10; // 10s
+    public static final int MORPH_DURATION = 20 * 90; // 10s
 
     public static final DeferredHolder<Potion, Potion> COCKTAIL_ZOMBIE_POTION =
             POTIONS.register("cocktail_zombie", () -> new Potion(
