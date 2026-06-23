@@ -3,6 +3,8 @@ package com.cocktail.cocktailmod.ability;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.monster.Skeleton;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Arrow;
@@ -26,10 +28,21 @@ public class ShootArrowAbility extends GenericShapeAbility<Skeleton> {
         CustomData data = held.get(DataComponents.CUSTOM_DATA);
         if (data == null || !data.copyTag().getBoolean("cocktailmod:skeleton_bow")) return;
 
-        Arrow arrow = new Arrow(world, player, Items.ARROW.getDefaultInstance(), null);
-        arrow.setPos(player.getX(), player.getEyeY(), player.getZ());
-        arrow.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 3.0F, 1.0F);
-        world.addFreshEntity(arrow);
+
+
+        for (int i = 0; i < 7; i ++) {
+            Arrow arrow = new Arrow(world, player, Items.ARROW.getDefaultInstance(), null);
+            arrow.setPos(player.getX(), player.getEyeY(), player.getZ());
+            float innacuracy = 7.0F;
+            if (i == 0) {
+                innacuracy = 1.0F;
+            }
+            arrow.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 4.0F, innacuracy);
+            world.addFreshEntity(arrow);
+        }
+        world.playSound(null, player.blockPosition(), SoundEvents.ARROW_SHOOT, SoundSource.PLAYERS, 1.0f, 1.0f);
+
+
     }
 
     @Override
