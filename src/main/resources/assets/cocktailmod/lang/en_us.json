@@ -2,41 +2,49 @@
   "item.minecraft.potion.effect.cocktail": "Cocktail",
   "item.minecraft.lingering_potion.effect.cocktail": "Lingering Cocktail",
   "item.minecraft.splash_potion.effect.cocktail": "Splash Cocktail",
+  "item.minecraft.tipped_arrow.effect.cocktail": "Cocktail Tipped Arrow",
 
   "effect.cocktailmod.zombie_morph": "Zombie Morph",
   "item.minecraft.potion.effect.cocktail_zombie": "Cocktail Zombie",
   "item.minecraft.lingering_potion.effect.cocktail_zombie": "Lingering Cocktail Zombie",
   "item.minecraft.splash_potion.effect.cocktail_zombie": "Splash Cocktail Zombie",
+  "item.minecraft.tipped_arrow.effect.cocktail_zombie": "Arrow of Cocktail Zombie",
 
   "effect.cocktailmod.creeper_morph": "Creeper Morph",
   "item.minecraft.potion.effect.cocktail_creeper": "Cocktail Creeper",
   "item.minecraft.lingering_potion.effect.cocktail_creeper": "Lingering Cocktail Creeper",
   "item.minecraft.splash_potion.effect.cocktail_creeper": "Splash Cocktail Creeper",
+  "item.minecraft.tipped_arrow.effect.cocktail_creeper": "Arrow of Cocktail Creeper",
 
   "effect.cocktailmod.enderman_morph": "Enderman Morph",
   "item.minecraft.potion.effect.cocktail_enderman": "Cocktail Enderman",
   "item.minecraft.lingering_potion.effect.cocktail_enderman": "Lingering Cocktail Enderman",
   "item.minecraft.splash_potion.effect.cocktail_enderman": "Splash Cocktail Enderman",
+  "item.minecraft.tipped_arrow.effect.cocktail_enderman": "Arrow of Cocktail Enderman",
 
   "effect.cocktailmod.spider_morph": "Spider Morph",
   "item.minecraft.potion.effect.cocktail_spider": "Cocktail Spider",
   "item.minecraft.lingering_potion.effect.cocktail_spider": "Lingering Cocktail Spider",
   "item.minecraft.splash_potion.effect.cocktail_spider": "Splash Cocktail Spider",
+  "item.minecraft.tipped_arrow.effect.cocktail_spider": "Arrow of Cocktail Spider",
 
   "effect.cocktailmod.skeleton_morph": "Skeleton Morph",
   "item.minecraft.potion.effect.cocktail_skeleton": "Cocktail Skeleton",
   "item.minecraft.lingering_potion.effect.cocktail_skeleton": "Lingering Cocktail Skeleton",
   "item.minecraft.splash_potion.effect.cocktail_skeleton": "Splash Cocktail Skeleton",
+  "item.minecraft.tipped_arrow.effect.cocktail_skeleton": "Arrow of Cocktail Skeleton",
 
   "effect.cocktailmod.blaze_morph": "Blaze Morph",
   "item.minecraft.potion.effect.cocktail_blaze": "Cocktail Blaze",
   "item.minecraft.lingering_potion.effect.cocktail_blaze": "Lingering Cocktail Blaze",
   "item.minecraft.splash_potion.effect.cocktail_blaze": "Splash Cocktail Blaze",
+  "item.minecraft.tipped_arrow.effect.cocktail_blaze": "Arrow of Cocktail Blaze",
 
   "effect.cocktailmod.slime_morph": "Slime Morph",
   "item.minecraft.potion.effect.cocktail_slime": "Cocktail Slime",
   "item.minecraft.lingering_potion.effect.cocktail_slime": "Lingering Cocktail Slime",
   "item.minecraft.splash_potion.effect.cocktail_slime": "Splash Cocktail Slime",
+  "item.minecraft.tipped_arrow.effect.cocktail_slime": "Arrow of Cocktail Slime",
 
   "item.cocktailmod.rap_do_minecraft_music_disc": "Rap do Minecraft Music Disc",
   "item.cocktailmod.rap_do_minecraft_music_disc.desc": "Player Tauz - Rap do Minecraft"
