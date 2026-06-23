@@ -17,7 +17,7 @@ public class ZombieMorph extends MobEffect {
     @Override
     public void onEffectAdded(LivingEntity entity, int amplifier) {
         if (entity instanceof ServerPlayer player) {
-            player.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(0.035);
+//            player.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(0.035);
             Zombie zombie = new Zombie(EntityType.ZOMBIE, player.serverLevel());
             PlayerShape.updateShapes(player, zombie);
         }

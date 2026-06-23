@@ -27,17 +27,6 @@ import java.util.List;
 
 @EventBusSubscriber(modid = CocktailMod.MOD_ID)
 public class ModEvents {
-    private static final List<Holder<MobEffect>> slowedMorphs =
-            Arrays.asList(
-                    MorphEffects.CREEPER_MORPH,
-                    MorphEffects.ZOMBIE_MORPH,
-                    MorphEffects.SLIME_MORPH
-            );
-
-    private static final List<Holder<MobEffect>> jumpingMorphs =
-            Arrays.asList(
-                    MorphEffects.SLIME_MORPH
-            );
 
     private static boolean isSwappingMorph = false;
 
@@ -63,6 +52,7 @@ public class ModEvents {
             }
         }
     }
+
     @SubscribeEvent
     public static void onMobEffectExpired(MobEffectEvent.Expired event) {
         if (!(event.getEntity() instanceof Player player)) return;
@@ -70,6 +60,7 @@ public class ModEvents {
         var effect = event.getEffectInstance().getEffect();
         cleanupMorph(player, effect, false);
     }
+
     @SubscribeEvent
     public static void onLivingFall(LivingFallEvent event) {
         if (event.getEntity().getType().toString().contains("slime")) {
@@ -93,12 +84,6 @@ public class ModEvents {
                     player.inventoryMenu.getCraftSlots()
                 );
             }
-            if (slowedMorphs.contains(effect)) {
-                player.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(0.1);
-            }
-            if (jumpingMorphs.contains(effect)) {
-                player.getAttribute(Attributes.JUMP_STRENGTH).setBaseValue(0.42);
-            }
         }
     }
     @SubscribeEvent
@@ -109,10 +94,6 @@ public class ModEvents {
         if (!player.getActiveEffects().toString().contains("morph")) {
             return;
         }
-
-        player.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(0.1);
-        player.getAttribute(Attributes.JUMP_STRENGTH).setBaseValue(0.42);
-
         SwapPackets.sendSwapRequest();
     }
 
@@ -146,7 +127,6 @@ public class ModEvents {
     public static void onMobEffectRemoved(MobEffectEvent.Remove event) {
         if (isSwappingMorph) return;
         if (!(event.getEntity() instanceof Player player)) return;
-
 
         var effect = event.getEffectInstance().getEffect();
         if (effect.toString().contains("morph")){

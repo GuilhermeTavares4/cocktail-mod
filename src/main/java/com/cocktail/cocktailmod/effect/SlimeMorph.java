@@ -15,8 +15,8 @@ public class SlimeMorph extends MobEffect {
     @Override
     public void onEffectAdded(LivingEntity entity, int amplifier) {
         if (entity instanceof ServerPlayer player) {
-            player.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(0.03);
-            player.getAttribute(Attributes.JUMP_STRENGTH).setBaseValue(2.0);
+//            player.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(0.03);
+//            player.getAttribute(Attributes.JUMP_STRENGTH).setBaseValue(2.0);
             Slime slime = new Slime(EntityType.SLIME, player.serverLevel());
             slime.setSize(2, false);
             PlayerShape.updateShapes(player, slime);

@@ -3,8 +3,11 @@ package com.cocktail.cocktailmod.effect;
 import com.cocktail.cocktailmod.CocktailMod;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -14,11 +17,17 @@ public class MorphEffects {
 
     public static final Holder<MobEffect> ZOMBIE_MORPH =
             MORPH_EFFECTS.register("zombie_morph",
-                    () -> new ZombieMorph(MobEffectCategory.NEUTRAL, 0x3B7A57));
+                    () -> new ZombieMorph(MobEffectCategory.NEUTRAL, 0x3B7A57)
+                            .addAttributeModifier(Attributes.MOVEMENT_SPEED,
+                                    ResourceLocation.fromNamespaceAndPath(CocktailMod.MOD_ID, "zombie_morph"), -0.65F,
+                                    AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
 
     public static final Holder<MobEffect> CREEPER_MORPH =
             MORPH_EFFECTS.register("creeper_morph",
-                    () -> new CreeperMorph(MobEffectCategory.NEUTRAL, 0x0F800F));
+                    () -> new CreeperMorph(MobEffectCategory.NEUTRAL, 0x0F800F)
+                            .addAttributeModifier(Attributes.MOVEMENT_SPEED,
+                            ResourceLocation.fromNamespaceAndPath(CocktailMod.MOD_ID, "creeper_morph"), -0.40F,
+                            AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
 
     public static final Holder<MobEffect> ENDERMAN_MORPH =
             MORPH_EFFECTS.register("enderman_morph",
@@ -38,7 +47,13 @@ public class MorphEffects {
 
     public static final Holder<MobEffect> SLIME_MORPH =
             MORPH_EFFECTS.register("slime_morph",
-                    () -> new SlimeMorph(MobEffectCategory.NEUTRAL, 0x51A03E));
+                    () -> new SlimeMorph(MobEffectCategory.NEUTRAL, 0x51A03E)
+                            .addAttributeModifier(Attributes.MOVEMENT_SPEED,
+                            ResourceLocation.fromNamespaceAndPath(CocktailMod.MOD_ID, "smile_morph"), -0.65F,
+                            AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL)
+                            .addAttributeModifier(Attributes.JUMP_STRENGTH,
+                            ResourceLocation.fromNamespaceAndPath(CocktailMod.MOD_ID, "slime_morph"), 2,
+                            AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
 
     public static void register(IEventBus eventBus) {
         MORPH_EFFECTS.register(eventBus);

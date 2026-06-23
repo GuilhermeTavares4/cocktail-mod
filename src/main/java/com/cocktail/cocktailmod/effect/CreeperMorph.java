@@ -17,7 +17,7 @@ public class CreeperMorph extends MobEffect {
     @Override
     public void onEffectAdded(LivingEntity entity, int amplifier) {
         if (entity instanceof ServerPlayer player) {
-            player.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(0.06);
+//            player.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(0.06);
             Creeper creeper = new Creeper(EntityType.CREEPER, player.serverLevel());
             PlayerShape.updateShapes(player, creeper);
         }
