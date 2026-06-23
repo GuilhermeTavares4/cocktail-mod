@@ -119,10 +119,14 @@ configurations {
 
 repositories {
     maven { url = "https://maven.tocraft.dev/public/" }
+
 }
 
 dependencies {
     implementation("dev.tocraft:walkers-neoforge:1.21-5.8.11")
+    implementation files("libs/immersive_paintings-neoforge-1.21.1-0.7.8.jar")
+    implementation files("libs/fzzy_config-0.7.6+1.21+neoforge.jar")
+    implementation files ("libs/kotlinforforge-5.11.0-all.jar")
 //    implementation files("libs/craftedcore-5.8.2.jar")
 
     // Example optional mod dependency with JEI
